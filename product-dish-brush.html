@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360° Rotating Soap Dispensing Dish Brush</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #fff; }
+        .product-container { 
+            max-width: 1100px; 
+            margin: auto; 
+            display: flex; 
+            gap: 60px; 
+            padding: 40px 20px; 
+            align-items: flex-start; 
+        }
+        
+        /* Left Side: Images */
+        .product-images { 
+            flex: 0 0 45%; 
+            max-width: 450px; 
+        }
+        .main-img { 
+            width: 100%; 
+            height: auto;
+            max-height: 500px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            border: 1px solid #eee;
+        }
+        .thumbnail-container { display: flex; gap: 10px; margin-top: 15px; }
+        .thumb-img { 
+            width: 80px; 
+            height: 80px; 
+            border: 2px solid #ddd; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            object-fit: cover; 
+            transition: border-color 0.2s ease;
+        }
+
+        /* Right Side: Details */
+        .product-details { flex: 1; }
+        .product-title { font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: bold; margin: 0 0 10px 0; line-height: 1.3; }
+        .rating { color: #FFD700; font-size: 18px; margin-bottom: 15px; }
+        .price-area { font-size: 24px; font-weight: bold; color: #2E7D32; margin-bottom: 25px; }
+        .old-price { text-decoration: line-through; color: #888; font-size: 18px; margin-left: 10px; }
+
+        /* Bundle Options Box */
+        .bundle-box { border: 2px solid #2E7D32; border-radius: 8px; padding: 20px; background: #fff; margin-bottom: 25px; }
+        .bundle-option { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #eee; cursor: pointer; }
+        .bundle-option:last-child { border-bottom: none; }
+        .bundle-option input { margin-right: 10px; }
+
+        /* Action Buttons */
+        .btn-add-cart { width: 100%; background: #2E7D32; color: white; border: none; padding: 18px; font-size: 18px; font-weight: bold; border-radius: 4px; cursor: pointer; margin-bottom: 10px; text-transform: uppercase; }
+        .btn-buy-now { width: 100%; background: white; color: #000; border: 2px solid #000; padding: 18px; font-size: 18px; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
+        
+        @media (max-width: 768px) {
+            .product-container { flex-direction: column; }
+        }
+
+        /* Feature items image card control */
+        .feature-card-thumb {
+            width: 100%;
+            max-width: 550px; 
+            border-radius: 12px; 
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
+            background: #fff;
+            margin-top: 5px;
+        }
+
+        .feature-card-thumb img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .feature-point { font-weight: 500; }
+
+        .desc-card-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover; 
+        }
+
+        @media (max-width: 576px) {
+            .product-features-grid {
+                max-width: 100%;
+                gap: 10px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STEP 1: ANNOUNCEMENT BAR -->
+    <div style="background: #c62828; color: white; text-align: center; padding: 10px; font-size: 14px; font-weight: bold;">
+        📢 Spedizione GRATUITA per ordini superiori a €69!
+    </div>
+
+    <!-- STEP 2: NAVBAR / HEADER -->
+    <header style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo" style="font-weight: bold; font-size: 24px;">Sparkles</div>
+        <nav>
+            <a href="index.html" style="margin-right: 20px; text-decoration: none; color: #000;">Home</a>
+            <a href="#" style="margin-right: 20px; text-decoration: none; color: #000;">Shop</a>
+            <a href="#" style="text-decoration: none; color: #000;">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Product Layout (Left: Images, Right: Details) -->
+    <div class="product-container">
+        <!-- Left Column: Images -->
+        <div class="product-images">
+            <!-- Main Image with ID -->
+            <img id="mainImage" src="soap.jpg" alt="Main Product Image" class="main-img">
+            
+            <!-- Thumbnails with OnClick Events -->
+            <div class="thumbnail-container">
+                <img src="soap.jpg" class="thumb-img" onclick="changeImage(this)" style="border-color: #2E7D32;">
+                <img src="soap1.jpg" class="thumb-img" onclick="changeImage(this)">
+                <img src="soap2.jpg" class="thumb-img" onclick="changeImage(this)">
+                <img src="soap3.jpg" class="thumb-img" onclick="changeImage(this)">
+                <img src="soap4.webp" class="thumb-img" onclick="changeImage(this)">
+                <img src="soap5.jpg" class="thumb-img" onclick="changeImage(this)">
+            </div>
+        </div>
+
+        <!-- Right Column: Details & Checkout -->
+        <div class="product-details">
+            <h1 class="product-title">Spazzola per Piatti con Dispenser di Sapone, Spazzola Palmare per Pulizia con Supporto e Base Scolapiatti, Facile da Pulire, Ideale per Utensili da Cucina, Lavelli, Padelle e Pentole</h1>
+            <div class="rating">★★★★★ <span style="color:#555; font-size:14px;">(7659 Recensioni)</span></div>
+            
+            <div class="price-area">
+                €19,90 EUR <span class="old-price">€25,90 EUR</span>
+                <span style="font-size: 14px; background: #ffebee; color: #c62828; padding: 3px 8px; border-radius: 4px; margin-left: 10px;">RISPARMIA IL 22%</span>
+            </div>
+
+            <!-- Bundle Options -->
+            <div class="bundle-box">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 14px; letter-spacing: 1px; color: #555; text-transform: uppercase;">ACQUISTA IN BUNDLE E RISPARMIA</div>
+                
+                <label class="bundle-option">
+                    <div><input type="radio" name="bundle" checked> <strong>Acquista 1</strong></div>
+                    <div><strong>€19,90</strong></div>
+                </label>
+                <label class="bundle-option">
+                    <div><input type="radio" name="bundle"> <strong>Acquista 2 e ricevi il 10% DI SCONTO</strong></div>
+                    <div><strong>€35,82</strong></div>
+                </label>
+                <label class="bundle-option">
+                    <div><input type="radio" name="bundle"> <strong>Acquista 3 e ricevi il 15% DI SCONTO</strong></div>
+                    <div><strong>€50,75</strong></div>
+                </label>
+            </div>
+
+            <!-- Checkout Buttons -->
+            <button class="btn-add-cart">Aggiungi al Carrello</button>
+            <button class="btn-buy-now">Acquista Ora</button>
+        </div>
+    </div>
+
+    <!-- Full Width Description & Media Section -->
+    <div class="product-description-section" style="max-width: 1100px; margin: 40px auto; padding: 0 20px; border-top: 1px solid #eee; padding-top: 40px;">
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 24px; color: #111; margin-bottom: 20px; border-bottom: 2px solid #2E7D32; display: inline-block; padding-bottom: 5px;">Descrizione del prodotto</h2>
+        
+        <div class="description-text" style="font-family: 'Inter', sans-serif; color: #444; line-height: 1.8; font-size: 16px; margin-bottom: 30px;">
+            <div style="background-color: #f9f9f9; padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #2E7D32;">
+                <p style="margin: 5px 0;"><strong>Materiale:</strong> Plastica</p>
+                <p style="margin: 5px 0;"><strong>Caratteristiche del prodotto:</strong> Standard</p>
+                <p style="margin: 5px 0;"><strong>Dimensioni della confezione:</strong> 130 × 100 × 100 mm</p>
+            </div>
+
+            <h3 style="color: #2E7D32; margin-top: 20px; font-size: 18px;">Caratteristiche principali:</h3>
+            <ul style="padding-left: 20px;">
+                <li><strong>Materiale sicuro:</strong> Le setole della spazzola da cucina sono realizzate in nylon resistente alle alte temperature, per pulire efficacemente pentole e padelle senza danneggiare il rivestimento.</li>
+                <li><strong>Facile da usare:</strong> Svita la parte superiore, riempi il contenitore con il detersivo e richiudilo. Con una leggera pressione sul pulsante superiore, il detergente verrà erogato direttamente sulla spazzola.</li>
+                <li><strong>Spazzola per piatti con supporto:</strong> Il supporto è dotato di una base antiscivolo che raccoglie le gocce d'acqua, mantenendo il piano di lavoro pulito e asciutto. Il supporto è facile da smontare e da pulire.</li>
+                <li><strong>Impugnatura comoda:</strong> L'impugnatura ergonomica è confortevole e antiscivolo. Il manico può essere riempito con detersivo, rendendo la spazzola pratica e funzionale.</li>
+                <li><strong>Versatile e multiuso:</strong> Ideale per rimuovere facilmente grasso e sporco. Perfetta per pulire padelle, pentole, piatti, lavelli, fornelli, pentole in ghisa, piani di lavoro e molto altro.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Video Container -->
+    <div class="description-video-container" style="max-width: 650px; margin: 30px auto; border-radius: 8px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <video controls style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="product-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Why You'll Love It Section -->
+    <div class="features-list-section" style="max-width: 600px; margin: 40px auto; padding: 0 20px; font-family: 'Inter', sans-serif;">
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 24px; color: #111; margin-bottom: 25px; text-align: left;">Perché lo adorerai ✨</h2>
+
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>✨</span> Con una leggera pressione sul pulsante superiore, il detergente verrà erogato direttamente sulla spazzola.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="soap1.jpg" alt="Facile da usare" style="width: 100%; border-radius: 8px;">
+            </div>
+        </div>
+
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>🧼</span> Il supporto è dotato di una base antiscivolo che raccoglie le gocce d'acqua, mantenendo il piano di lavoro pulito e asciutto.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="soap2.jpg" alt="Supporto antiscivolo" style="width: 100%; border-radius: 8px;">
+            </div>
+        </div>
+
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>💪</span> Setole in nylon resistente alle alte temperature per pulire efficacemente senza danneggiare il rivestimento.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="soap3.jpg" alt="Materiale sicuro" style="width: 100%; border-radius: 8px;">
+            </div>
+        </div>
+
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
+                <span style="font-size: 18px;">✨</span> 
+                <span>Le setole in nylon resistente rimuovono efficacemente il grasso ostinato senza danneggiare il rivestimento antiaderente.</span>
+            </p>
+            <div class="feature-card-thumb" style="width: 100%; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                <img src="soap4.webp" alt="Setole resistenti e sicure" style="width: 100%; max-width: 500px; display: block; margin: 0 auto; height: auto;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Policies Container -->
+    <div class="product-policies" style="max-width: 1100px; margin: 30px auto; padding: 0 20px; font-family: 'Inter', sans-serif; color: #444; text-align: left;">
+        <div class="policy-box" style="margin-bottom: 25px;">
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #111; margin-bottom: 10px; font-weight: 600;">Informativa sulla Spedizione</h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                Offriamo la spedizione <strong>GRATUITA</strong> per ordini superiori a <strong>€69</strong>. Per gli articoli disponibili in magazzino, il tuo ordine verrà elaborato e spedito entro <strong>3-5 giorni lavorativi</strong> dalla verifica. A seconda della tua posizione, la consegna richiede solitamente circa <strong>7-14 giorni lavorativi</strong>. Puoi tracciare il tuo ordine direttamente dal menu "Traccia il mio ordine".
+            </p>
+        </div>
+
+        <div class="policy-box">
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #111; margin-bottom: 10px; font-weight: 600;">Informativa su Resi e Cambi</h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                Se non sei soddisfatto del tuo acquisto, puoi restituirlo per un rimborso entro <strong>30 giorni</strong> dalla consegna.
+            </p>
+        </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 40px auto; max-width: 1100px;">
+
+    <!-- Customer Reviews Section -->
+    <div class="reviews-section" style="max-width: 1100px; margin: 0 auto 50px auto; padding: 0 20px; font-family: 'Inter', sans-serif; color: #333; text-align: left;">
+        <h3 style="font-family: 'Poppins', sans-serif; font-size: 20px; color: #111; margin-bottom: 20px; font-weight: 600;">Recensioni dei Clienti</h3>
+        
+        <div class="rating-summary" style="background: #f9f9f9; padding: 20px; border-radius: 8px; display: flex; align-items: center; gap: 30px; margin-bottom: 30px; max-width: 700px;">
+            <div style="text-align: center; min-width: 120px;">
+                <h1 style="margin: 0; font-size: 40px; color: #111; font-weight: 700;">4.9</h1>
+                <div style="color: #ffb700; font-size: 20px; margin: 5px 0;">★★★★★</div>
+                <p style="margin: 0; font-size: 13px; color: #666;">Basato su 142 recensioni</p>
+            </div>
+            
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 10px; font-size: 13px;">
+                    <span style="width: 55px;">5 stelle</span>
+                    <div style="flex: 1; background: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div style="background: #ffb700; width: 92%; height: 100%;"></div>
+                    </div>
+                    <span style="color: #666; width: 35px; text-align: right;">92%</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; font-size: 13px;">
+                    <span style="width: 55px;">4 stelle</span>
+                    <div style="flex: 1; background: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div style="background: #ffb700; width: 6%; height: 100%;"></div>
+                    </div>
+                    <span style="color: #666; width: 35px; text-align: right;">6%</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; font-size: 13px;">
+                    <span style="width: 55px;">3 stelle</span>
+                    <div style="flex: 1; background: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div style="background: #ffb700; width: 2%; height: 100%;"></div>
+                    </div>
+                    <span style="color: #666; width: 35px; text-align: right;">2%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual Reviews List -->
+        <div class="reviews-list" style="max-width: 1100px; margin: 0 auto; padding: 0; display: flex; flex-direction: column; gap: 20px;">
+            <div class="review-card" style="border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                    <span style="font-weight: 600; font-size: 14px;">M***a <span style="font-weight: normal; color: #888; font-size: 12px; margin-left: 5px;">🇮🇹 Acquisto Verificato</span></span>
+                    <span style="color: #ffb700; font-size: 14px;">★★★★★</span>
+                </div>
+                <p style="margin: 0; font-size: 14px; color: #444; line-height: 1.5;">Prodotto davvero fantastico! La qualità della spugna e delle setole è eccellente, il sapone non perde affatto. Consigliatissimo!</p>
+            </div>
+
+            <div class="review-card" style="border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                    <span style="font-weight: 600; font-size: 14px;">A***a <span style="font-weight: normal; color: #888; font-size: 12px; margin-left: 5px;">🇮🇹 Acquisto Verificato</span></span>
+                    <span style="color: #ffb700; font-size: 14px;">★★★★★</span>
+                </div>
+                <p style="margin: 0; font-size: 14px; color: #444; line-height: 1.5;">Utensile da cucina utilissimo. Il design rende la pulizia delle pentole molto facile e veloce. Spedizione rapida!</p>
+            </div>
+
+            <div class="review-card" style="border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                    <span style="font-weight: 600; font-size: 14px;">S***a <span style="font-weight: normal; color: #888; font-size: 12px; margin-left: 5px;">🇮🇹 Acquisto Verificato</span></span>
+                    <span style="color: #ffb700; font-size: 14px;">★★★★★</span>
+                </div>
+                <p style="margin: 0; font-size: 14px; color: #444; line-height: 1.5;">Esattamente come nelle foto. La qualità è solida e fa risparmiare molto detersivo per i piatti.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Our Community Section -->
+    <div class="newsletter-section" style="background: #f4f4f4; padding: 50px 20px; text-align: center; margin-top: 50px;">
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 24px; color: #111; margin-bottom: 10px;">Unisciti alla Nostra Community</h2>
+        <p style="color: #666; margin-bottom: 25px; font-size: 15px;">Rimani aggiornato sui nostri ultimi prodotti e offerte esclusive.</p>
+        
+        <div class="subscribe-form" style="max-width: 450px; margin: 0 auto; display: flex; gap: 10px;">
+            <input type="email" placeholder="Inserisci la tua email" style="flex: 1; padding: 12px 15px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
+            <button style="background: #2E7D32; color: white; border: none; padding: 12px 25px; border-radius: 4px; font-weight: bold; cursor: pointer; text-transform: uppercase;">Iscriviti</button>
+        </div>
+    </div>
+
+    <!-- JavaScript to Handle Image Switcher -->
+    <script>
+        function changeImage(element) {
+            // Main image ka src change karega
+            document.getElementById('mainImage').src = element.src;
+
+            // Active green border clicked thumbnail par apply karega
+            let thumbnails = document.querySelectorAll('.thumb-img');
+            thumbnails.forEach(img => img.style.borderColor = '#ddd');
+            element.style.borderColor = '#2E7D32';
+        }
+    </script>
+
+</body>
+</html>

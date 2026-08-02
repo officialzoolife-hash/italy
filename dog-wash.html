@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spazzola Elettrica Ricaricabile Senza Fili</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #fff; }
+        .product-container { 
+            max-width: 1100px; 
+            margin: auto; 
+            display: flex; 
+            gap: 60px; 
+            padding: 40px 20px; 
+            align-items: flex-start; 
+        }
+        
+        /* Left Side: Images */
+        .product-images { 
+            flex: 0 0 45%; 
+            max-width: 450px; 
+        }
+        .main-img { 
+            width: 100%; 
+            height: auto;
+            max-height: 500px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            border: 1px solid #eee;
+        }
+        .thumbnail-container { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .thumb-img { 
+            width: 80px; 
+            height: 80px; 
+            border: 2px solid #ddd; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            object-fit: cover; 
+            transition: border-color 0.2s ease;
+        }
+
+        /* Right Side: Details */
+        .product-details { flex: 1; }
+        .product-title { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: bold; margin: 0 0 10px 0; line-height: 1.3; }
+        .rating { color: #FFD700; font-size: 18px; margin-bottom: 15px; }
+        .price-area { font-size: 24px; font-weight: bold; color: #2E7D32; margin-bottom: 25px; }
+        .old-price { text-decoration: line-through; color: #888; font-size: 18px; margin-left: 10px; }
+
+        /* Bundle Options Box */
+        .bundle-box { border: 2px solid #2E7D32; border-radius: 8px; padding: 20px; background: #fff; margin-bottom: 25px; }
+        .bundle-option { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #eee; cursor: pointer; }
+        .bundle-option:last-child { border-bottom: none; }
+        .bundle-option input { margin-right: 10px; }
+
+        /* Action Buttons */
+        .btn-add-cart { width: 100%; background: #2E7D32; color: white; border: none; padding: 18px; font-size: 18px; font-weight: bold; border-radius: 4px; cursor: pointer; margin-bottom: 10px; text-transform: uppercase; }
+        .btn-buy-now { width: 100%; background: white; color: #000; border: 2px solid #000; padding: 18px; font-size: 18px; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
+        
+        @media (max-width: 768px) {
+            .product-container { flex-direction: column; }
+        }
+
+        /* Feature items image card control */
+        .feature-card-thumb {
+            width: 100%;
+            max-width: 550px; 
+            border-radius: 12px; 
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
+            background: #fff;
+            margin-top: 5px;
+        }
+
+        .feature-card-thumb img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .feature-point { font-weight: 500; }
+
+        @media (max-width: 576px) {
+            .product-features-grid {
+                max-width: 100%;
+                gap: 10px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STEP 1: ANNOUNCEMENT BAR -->
+    <div style="background: #c62828; color: white; text-align: center; padding: 10px; font-size: 14px; font-weight: bold;">
+        📢 Spedizione GRATUITA per ordini superiori a €69!
+    </div>
+
+    <!-- STEP 2: NAVBAR / HEADER -->
+    <header style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo" style="font-weight: bold; font-size: 24px;">Sparkles</div>
+        <nav>
+            <a href="index.html" style="margin-right: 20px; text-decoration: none; color: #000;">Home</a>
+            <a href="#" style="margin-right: 20px; text-decoration: none; color: #000;">Shop</a>
+            <a href="#" style="text-decoration: none; color: #000;">Contatti</a>
+        </nav>
+    </header>
+
+    <!-- Main Product Layout (Left: Images, Right: Details) -->
+    <div class="product-container">
+        <!-- Left Column: Images -->
+        <div class="product-images">
+            <img id="mainImage" src="spin2.jpg" alt="Spazzola Elettrica Ricaricabile Senza Fili" class="main-img">
+            <div class="thumbnail-container">
+                <img src="spin2.jpg" class="thumb-img" onclick="changeImage(this)" style="border-color: #2E7D32;">
+                <img src="spin3.jpg" class="thumb-img" onclick="changeImage(this)">
+                <img src="spin4.jpg" class="thumb-img" onclick="changeImage(this)">
+                <img src="spin5.jpg" class="thumb-img" onclick="changeImage(this)">
+                <img src="spin7.jpg" class="thumb-img" onclick="changeImage(this)">
+                <img src="spin6.jpg" class="thumb-img" onclick="changeImage(this)">
+            </div>
+        </div>
+
+        <!-- Right Column: Details & Checkout -->
+        <div class="product-details">
+            <h1 class="product-title">Spazzola Elettrica Ricaricabile Senza Fili, Spazzola Rotante Turbo per Pulizia Profonda, Pulitore Spin Scrubber Multifunzione</h1>
+            <div class="rating">★★★★★ <span style="color:#555; font-size:14px;">(7659 Recensioni)</span></div>
+            
+            <div class="price-area">
+                €29,90 EUR <span class="old-price">€39,90 EUR</span>
+                <span style="font-size: 14px; background: #ffebee; color: #c62828; padding: 3px 8px; border-radius: 4px; margin-left: 10px;">RISPARMIA IL 25%</span>
+            </div>
+
+            <!-- Bundle Options -->
+            <div class="bundle-box">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 14px; letter-spacing: 1px; color: #555; text-transform: uppercase;">ACQUISTA IN BUNDLE E RISPARMIA</div>
+                
+                <label class="bundle-option">
+                    <div><input type="radio" name="bundle" checked> <strong>Acquista 1</strong></div>
+                    <div><strong>€29,90</strong></div>
+                </label>
+                <label class="bundle-option">
+                    <div><input type="radio" name="bundle"> <strong>Acquista 2 e ricevi il 10% DI SCONTO</strong></div>
+                    <div><strong>€53,82</strong></div>
+                </label>
+                <label class="bundle-option">
+                    <div><input type="radio" name="bundle"> <strong>Acquista 3 e ricevi il 15% DI SCONTO</strong></div>
+                    <div><strong>€76,24</strong></div>
+                </label>
+            </div>
+
+            <!-- Checkout Buttons -->
+            <button class="btn-add-cart">Aggiungi al Carrello</button>
+            <button class="btn-buy-now">Acquista Ora</button>
+        </div>
+    </div>
+
+    <!-- Full Width Description & Media Section -->
+    <div class="product-description-section" style="max-width: 1100px; margin: 40px auto; padding: 0 20px; border-top: 1px solid #eee; padding-top: 40px;">
+        
+        <!-- Tab/Heading -->
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 24px; color: #111; margin-bottom: 20px; border-bottom: 2px solid #2E7D32; display: inline-block; padding-bottom: 5px;">Descrizione del prodotto</h2>
+        
+        <!-- Text Description -->
+        <div class="description-text" style="font-family: 'Inter', sans-serif; color: #444; line-height: 1.8; font-size: 16px; margin-bottom: 30px;">
+            
+            <!-- Key Product Quick Info -->
+            <div style="background-color: #f9f9f9; padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #2E7D32;">
+                <p style="margin: 5px 0;"><strong>Materiale:</strong> Plastica ABS di alta qualità + componenti elettronici</p>
+                <p style="margin: 5px 0;"><strong>Dimensioni Confezione:</strong> 296 × 262 × 118 mm</p>
+                <p style="margin: 5px 0;"><strong>Contenuto della Confezione:</strong> 1 × Spazzola elettrica per la pulizia, 7 × Testine di ricambio, 1 × Cavo di ricarica USB, 1 × Supporto</p>
+            </div>
+
+            <p>Rendi le tue pulizie domestiche semplici, veloci e senza sforzo con la nostra <strong>Spazzola Elettrica Ricaricabile per la Pulizia con Funzione Turbo</strong>. Dotata di una potente batteria ricaricabile e di un motore ad alta velocità, è la soluzione ideale per eliminare lo sporco più ostinato da qualsiasi superficie.</p>
+
+            <h3 style="color: #2E7D32; margin-top: 25px; font-size: 18px;">Caratteristiche Principali:</h3>
+            <ul style="padding-left: 20px;">
+                <li><strong>Batteria Sicura e Lunga Durata:</strong> Dotata di una batteria al litio da 1500 mAh e sistema integrato di protezione dalle perdite per una ricarica sicura e un funzionamento affidabile.</li>
+                <li><strong>7 Testine Intercambiabili:</strong> Include 7 diverse testine adatte ad ogni esigenza di pulizia (piastrelle, vetri, cucina, auto, ecc.).</li>
+                <li><strong>Resistenza all'Acqua IPX6:</strong> Realizzata in resistente materiale ABS impermeabile certificato IPX6, utilizzabile in totale sicurezza anche sotto l'acqua corrente.</li>
+                <li><strong>Impugnatura Ergonomica:</strong> Il manico in silicone garantisce una presa confortevole e antiscivolo anche con le mani bagnate o insaponate.</li>
+                <li><strong>Design Senza Fili e Flessibile:</strong> Pulisci ogni angolo della casa in totale libertà, senza il fastidio dei cavi elettrici.</li>
+            </ul>
+
+            <h3 style="color: #2E7D32; margin-top: 30px; font-size: 18px;">Specifiche Tecniche:</h3>
+            
+            <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; max-width: 600px; margin-top: 15px;">
+                <p style="margin: 6px 0; font-size: 14px;"><strong>Materiale:</strong> Plastica ABS + Componenti elettronici</p>
+                <p style="margin: 6px 0; font-size: 14px;"><strong>Capacità Batteria:</strong> 1500 mAh</p>
+                <p style="margin: 6px 0; font-size: 14px;"><strong>Velocità di Rotazione:</strong> 350 giri/min</p>
+                <p style="margin: 6px 0; font-size: 14px;"><strong>Impermeabilità:</strong> Certificazione IPX6</p>
+                <p style="margin: 6px 0; font-size: 14px;"><strong>Colore:</strong> Grigio</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Box -->
+    <div class="description-video-container" style="max-width: 650px; margin: 30px auto; border-radius: 8px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <video controls style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="product-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Why You'll Love It Section -->
+    <div class="features-list-section" style="max-width: 600px; margin: 40px auto; padding: 0 20px; font-family: 'Inter', sans-serif;">
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 24px; color: #111; margin-bottom: 25px; text-align: left;">Perché lo adorerai ✨</h2>
+
+        <!-- Feature Item 1 -->
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>⚡</span> Motore Turbo a 350 giri/min per rimuovere lo sporco ed il grasso più ostinato senza sforzo.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="spin1.jpg" alt="Motore Turbo 350 RPM">
+            </div>
+        </div>
+
+        <!-- Feature Item 2 -->
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>🧩</span> 7 Testine intercambiabili incluse per pulire bagni, cucine, vetri, auto e fughe.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="spin2.jpg" alt="7 Testine intercambiabili">
+            </div>
+        </div>
+
+        <!-- Feature Item 3 -->
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>💧</span> Impermeabilità IPX6 sicura per un utilizzo tranquillo sotto la doccia o nel lavandino.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="spin3.jpg" alt="Impermeabile IPX6">
+            </div>
+        </div>
+
+        <!-- Feature Item 4 -->
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>🔋</span> Batteria al litio da 1500 mAh ricaricabile via USB per una lunga autonomia senza fili.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="spin5.jpg" alt="Batteria al litio 1500 mAh">
+            </div>
+        </div>
+
+        <!-- Feature Item 5 -->
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>✨</span> Impugnatura ergonomica in silicone antiscivolo per la massima comodità durante l'uso.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="spin7.jpg" alt="Impugnatura ergonomica antiscivolo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Policies Container -->
+    <div class="product-policies" style="max-width: 1100px; margin: 30px auto; padding: 0 20px; font-family: 'Inter', sans-serif; color: #444; text-align: left;">
+        <div class="policy-box" style="margin-bottom: 25px;">
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #111; margin-bottom: 10px; font-weight: 600;">Informativa sulla Spedizione</h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                Offriamo la spedizione <strong>GRATUITA</strong> per ordini superiori a <strong>€69</strong>. Per gli articoli disponibili in magazzino, il tuo ordine verrà elaborato e spedito entro <strong>3-5 giorni lavorativi</strong>. La consegna richiede solitamente circa <strong>7-14 giorni lavorativi</strong>. Puoi tracciare il tuo ordine direttamente dal menu "Traccia il mio ordine".
+            </p>
+        </div>
+
+        <div class="policy-box">
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #111; margin-bottom: 10px; font-weight: 600;">Informativa su Resi e Cambi</h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                Se non sei soddisfatto del tuo acquisto, puoi restituirlo per un rimborso completo entro <strong>30 giorni</strong> dalla consegna.
+            </p>
+        </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 40px auto; max-width: 1100px;">
+
+    <!-- Customer Reviews Section -->
+    <div class="reviews-section" style="max-width: 1100px; margin: 0 auto 50px auto; padding: 0 20px; font-family: 'Inter', sans-serif; color: #333; text-align: left;">
+        <h3 style="font-family: 'Poppins', sans-serif; font-size: 20px; color: #111; margin-bottom: 20px; font-weight: 600;">Recensioni dei Clienti</h3>
+        
+        <div class="rating-summary" style="background: #f9f9f9; padding: 20px; border-radius: 8px; display: flex; align-items: center; gap: 30px; margin-bottom: 30px; max-width: 700px;">
+            <div style="text-align: center; min-width: 120px;">
+                <h1 style="margin: 0; font-size: 40px; color: #111; font-weight: 700;">4.9</h1>
+                <div style="color: #ffb700; font-size: 20px; margin: 5px 0;">★★★★★</div>
+                <p style="margin: 0; font-size: 13px; color: #666;">Basato su 142 recensioni</p>
+            </div>
+            
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 10px; font-size: 13px;">
+                    <span style="width: 55px;">5 stelle</span>
+                    <div style="flex: 1; background: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div style="background: #ffb700; width: 92%; height: 100%;"></div>
+                    </div>
+                    <span style="color: #666; width: 35px; text-align: right;">92%</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; font-size: 13px;">
+                    <span style="width: 55px;">4 stelle</span>
+                    <div style="flex: 1; background: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div style="background: #ffb700; width: 6%; height: 100%;"></div>
+                    </div>
+                    <span style="color: #666; width: 35px; text-align: right;">6%</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; font-size: 13px;">
+                    <span style="width: 55px;">3 stelle</span>
+                    <div style="flex: 1; background: #e0e0e0; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div style="background: #ffb700; width: 2%; height: 100%;"></div>
+                    </div>
+                    <span style="color: #666; width: 35px; text-align: right;">2%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual Reviews List -->
+        <div class="reviews-list" style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+            <div class="review-card" style="border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                    <span style="font-weight: 600; font-size: 14px;">M***a <span style="font-weight: normal; color: #888; font-size: 12px; margin-left: 5px;">🇮🇹 Acquisto Verificato</span></span>
+                    <span style="color: #ffb700; font-size: 14px;">★★★★★</span>
+                </div>
+                <p style="margin: 0; font-size: 14px; color: #444; line-height: 1.5;">Prodotto fantastico! Pulisce le fughe delle piastrelle del bagno in pochissimo tempo. Le 7 testine sono utilissime per ogni tipo di superficie. Consigliatissimo!</p>
+            </div>
+
+            <div class="review-card" style="border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                    <span style="font-weight: 600; font-size: 14px;">A***n <span style="font-weight: normal; color: #888; font-size: 12px; margin-left: 5px;">🇮🇹 Acquisto Verificato</span></span>
+                    <span style="color: #ffb700; font-size: 14px;">★★★★★</span>
+                </div>
+                <p style="margin: 0; font-size: 14px; color: #444; line-height: 1.5;">Molto utile in cucina per pulire fornelli e lavello senza faticare. La batteria dura parecchio e la spazzola è leggera da impugnare.</p>
+            </div>
+
+            <div class="review-card" style="border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                    <span style="font-weight: 600; font-size: 14px;">S***a <span style="font-weight: normal; color: #888; font-size: 12px; margin-left: 5px;">🇮🇹 Acquisto Verificato</span></span>
+                    <span style="color: #ffb700; font-size: 14px;">★★★★★</span>
+                </div>
+                <p style="margin: 0; font-size: 14px; color: #444; line-height: 1.5;">Prodotto esattamente come descritto. Ottima qualità costruttiva, ottima potenza e spedizione rapida.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Our Community Section -->
+    <div class="newsletter-section" style="background: #f4f4f4; padding: 50px 20px; text-align: center; margin-top: 50px;">
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 24px; color: #111; margin-bottom: 10px;">Unisciti alla Nostra Community</h2>
+        <p style="color: #666; margin-bottom: 25px; font-size: 15px;">Rimani aggiornato sui nostri ultimi prodotti e offerte esclusive.</p>
+        
+        <div class="subscribe-form" style="max-width: 450px; margin: 0 auto; display: flex; gap: 10px;">
+            <input type="email" placeholder="Inserisci la tua email" style="flex: 1; padding: 12px 15px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
+            <button style="background: #2E7D32; color: white; border: none; padding: 12px 25px; border-radius: 4px; font-weight: bold; cursor: pointer; text-transform: uppercase;">Iscriviti</button>
+        </div>
+    </div>
+
+    <!-- JavaScript to Handle Image Switcher -->
+    <script>
+        function changeImage(element) {
+            document.getElementById('mainImage').src = element.src;
+
+            let thumbnails = document.querySelectorAll('.thumb-img');
+            thumbnails.forEach(img => img.style.borderColor = '#ddd');
+            element.style.borderColor = '#2E7D32';
+        }
+    </script>
+
+</body>
+</html>

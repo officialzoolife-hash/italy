@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prolunga Universale per Rubinetto Antischizzo per Cucina e Casa - Sparkles</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #fff; }
+        .product-container { 
+            max-width: 1100px; 
+            margin: auto; 
+            display: flex; 
+            gap: 60px; 
+            padding: 40px 20px; 
+            align-items: flex-start; 
+        }
+        
+        /* Left Side: Images */
+        .product-images { 
+            flex: 0 0 45%; 
+            max-width: 450px; 
+        }
+        .main-img { 
+            width: 100%; 
+            height: auto;
+            max-height: 500px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            border: 1px solid #eee;
+        }
+        .thumbnail-container { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .thumb-img { 
+            width: 80px; 
+            height: 80px; 
+            border: 2px solid #ddd; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            object-fit: cover; 
+            transition: border-color 0.2s ease;
+        }
+
+        /* Right Side: Details */
+        .product-details { flex: 1; }
+        .product-title { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: bold; margin: 0 0 10px 0; line-height: 1.3; }
+        .rating { color: #FFD700; font-size: 18px; margin-bottom: 15px; }
+        .price-area { font-size: 24px; font-weight: bold; color: #2E7D32; margin-bottom: 25px; }
+        .old-price { text-decoration: line-through; color: #888; font-size: 18px; margin-left: 10px; }
+
+        /* Bundle Options Box */
+        .bundle-box { border: 2px solid #2E7D32; border-radius: 8px; padding: 20px; background: #fff; margin-bottom: 25px; }
+        .bundle-option { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #eee; cursor: pointer; }
+        .bundle-option:last-child { border-bottom: none; }
+        .bundle-option input { margin-right: 10px; }
+
+        /* Action Buttons */
+        .btn-add-cart { width: 100%; background: #2E7D32; color: white; border: none; padding: 18px; font-size: 18px; font-weight: bold; border-radius: 4px; cursor: pointer; margin-bottom: 10px; text-transform: uppercase; }
+        .btn-buy-now { width: 100%; background: white; color: #000; border: 2px solid #000; padding: 18px; font-size: 18px; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
+        
+        @media (max-width: 768px) {
+            .product-container { flex-direction: column; }
+        }
+
+        /* Feature items image card control */
+        .feature-card-thumb {
+            width: 100%;
+            max-width: 550px; 
+            border-radius: 12px; 
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
+            background: #fff;
+            margin-top: 5px;
+        }
+
+        .feature-card-thumb img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .feature-point { font-weight: 500; }
+    </style>
+</head>
+<body>
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div style="background: #c62828; color: white; text-align: center; padding: 10px; font-size: 14px; font-weight: bold;">
+        📢 Spedizione GRATUITA per ordini superiori a €69!
+    </div>
+
+    <!-- NAVBAR / HEADER -->
+    <header style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo" style="font-weight: bold; font-size: 24px;">Sparkles</div>
+        <nav>
+            <a href="index.html" style="margin-right: 20px; text-decoration: none; color: #000;">Home</a>
+            <a href="#" style="margin-right: 20px; text-decoration: none; color: #000;">Shop</a>
+            <a href="#" style="text-decoration: none; color: #000;">Contatti</a>
+        </nav>
+    </header>
+
+    <!-- Main Product Layout -->
+    <div class="product-container">
+        <!-- Left Column: Images -->
+        <div class="product-images">
+            <img id="mainImage" src="sink.jpg" alt="Prolunga Universale per Rubinetto Antischizzo" class="main-img">
+            <div class="thumbnail-container">
+                <img src="sink2.jpg" class="thumb-img" onclick="changeImage(this)" style="border-color: #2E7D32;">
+                <img src="sink3.jpg" class="thumb-img" onclick="changeImage(this)">
+                <img src="sink4.jpg" class="thumb-img" onclick="changeImage(this)">
+                <img src="sink5.jpg" class="thumb-img" onclick="changeImage(this)">
+                <img src="sink6.webp" class="thumb-img" onclick="changeImage(this)">
+            </div>
+        </div>
+
+        <!-- Right Column: Details & Checkout -->
+        <div class="product-details">
+            <h1 class="product-title">Prolunga Universale per Rubinetto Antischizzo per Cucina e Casa</h1>
+            <div class="rating">★★★★★ <span style="color:#555; font-size:14px;">(2940 Recensioni)</span></div>
+            
+            <div class="price-area">
+                €15,00 EUR <span class="old-price">€22,00 EUR</span>
+                <span style="font-size: 14px; background: #ffebee; color: #c62828; padding: 3px 8px; border-radius: 4px; margin-left: 10px;">RISPARMIA IL 31%</span>
+            </div>
+
+            <!-- Bundle Options -->
+            <div class="bundle-box">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 14px; letter-spacing: 1px; color: #555; text-transform: uppercase;">ACQUISTA IN BUNDLE E RISPARMIA</div>
+                
+                <label class="bundle-option">
+                    <div><input type="radio" name="bundle" checked> <strong>Acquista 1</strong></div>
+                    <div><strong>€15,00</strong></div>
+                </label>
+                <label class="bundle-option">
+                    <div><input type="radio" name="bundle"> <strong>Acquista 2 e ricevi il 10% DI SCONTO</strong></div>
+                    <div><strong>€27,00</strong></div>
+                </label>
+                <label class="bundle-option">
+                    <div><input type="radio" name="bundle"> <strong>Acquista 3 e ricevi il 15% DI SCONTO</strong></div>
+                    <div><strong>€38,25</strong></div>
+                </label>
+            </div>
+
+            <!-- Checkout Buttons -->
+            <button class="btn-add-cart">Aggiungi al Carrello</button>
+            <button class="btn-buy-now">Acquista Ora</button>
+        </div>
+    </div>
+
+    <!-- Full Width Description Section -->
+    <div class="product-description-section" style="max-width: 1100px; margin: 40px auto; padding: 0 20px; border-top: 1px solid #eee; padding-top: 40px;">
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 24px; color: #111; margin-bottom: 20px; border-bottom: 2px solid #2E7D32; display: inline-block; padding-bottom: 5px;">Descrizione del prodotto</h2>
+        
+        <div class="description-text" style="font-family: 'Inter', sans-serif; color: #444; line-height: 1.8; font-size: 16px; margin-bottom: 30px;">
+            <p>Migliora la funzionalità del tuo lavello in cucina o in bagno con la nostra <strong>Prolunga Universale per Rubinetto Antischizzo</strong>. Progettata con uno stile moderno e minimalista, offre una soluzione pratica ed elegante per pulire piatti, lavare frutta e verdura o sciacquare il lavandino senza spruzzi fastidiosi.</p>
+
+            <!-- Specs Box -->
+            <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #2E7D32;">
+                <h3 style="margin-top: 0; color: #111; font-size: 18px;">Informazioni sul Prodotto:</h3>
+                <p style="margin: 5px 0;"><strong>Materiale:</strong> Plastica ad alta resistenza</p>
+                <p style="margin: 5px 0;"><strong>Trattamento Superficiale:</strong> Placcatura galvanica</p>
+                <p style="margin: 5px 0;"><strong>Metodo di Controllo:</strong> Una maniglia, un comando</p>
+                <p style="margin: 5px 0;"><strong>Pressione Nominali:</strong> 0,1 – 0,4 MPa</p>
+                <p style="margin: 5px 0;"><strong>Temperatura di Esercizio:</strong> 0 – 65 °C</p>
+                <p style="margin: 5px 0;"><strong>Installazione:</strong> Facile da installare</p>
+                <p style="margin: 5px 0;"><strong>Stile:</strong> Moderno e minimalista</p>
+                <p style="margin: 5px 0;"><strong>Dimensioni Confezione:</strong> 150 × 100 × 50 mm</p>
+            </div>
+
+            <!-- Specifiche / Opzioni disponibili -->
+            <h3 style="color: #2E7D32; margin-top: 25px; font-size: 18px;">Specifiche e Varianti Disponibili:</h3>
+            <ul style="padding-left: 20px; margin-bottom: 25px;">
+                <li>Doccetta corta</li>
+                <li>Doccetta corta + giunto universale</li>
+                <li>Doccetta con tubo flessibile</li>
+                <li>Doccetta con tubo flessibile + giunto universale</li>
+                <li>Doccetta con tubo sagomabile</li>
+                <li>Doccetta con tubo sagomabile + giunto universale</li>
+            </ul>
+
+            <!-- Contenuto della Confezione -->
+            <div style="background-color: #fff; border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; margin-top: 20px;">
+                <h3 style="margin-top: 0; color: #111; font-size: 18px;">Contenuto della Confezione (In base alla variante scelta):</h3>
+                <p style="margin: 8px 0;"><strong>Opzione 1:</strong> 1 × Doccetta, 1 × Adattatore filettato, 2 × Guarnizioni</p>
+                <p style="margin: 8px 0;"><strong>Opzione 2:</strong> 1 × Doccetta, 1 × Adattatore filettato, 2 × Guarnizioni, 1 × Attacco universale</p>
+                <p style="margin: 8px 0;"><strong>Opzione 3:</strong> 1 × Doccetta con tubo flessibile, 1 × Adattatore filettato, 2 × Guarnizioni</p>
+                <p style="margin: 8px 0;"><strong>Opzione 4:</strong> 1 × Doccetta con tubo flessibile, 1 × Adattatore filettato, 2 × Guarnizioni, 1 × Attacco universale</p>
+                <p style="margin: 8px 0;"><strong>Opzione 5:</strong> 1 × Doccetta con tubo sagomabile, 1 × Doccetta con tubo flessibile, 1 × Adattatore filettato, 2 × Guarnizioni</p>
+                <p style="margin: 8px 0;"><strong>Opzione 6:</strong> 1 × Doccetta con tubo sagomabile, 1 × Adattatore filettato, 2 × Guarnizioni, 1 × Attacco universale</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why You'll Love It Section -->
+    <div class="features-list-section" style="max-width: 600px; margin: 40px auto; padding: 0 20px; font-family: 'Inter', sans-serif;">
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 24px; color: #111; margin-bottom: 25px; text-align: left;">Perché lo adorerai ✨</h2>
+
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>💧</span> <strong>Tecnologia Antischizzo:</strong> Flusso flessibile e orientabile per evitare spruzzi d'acqua sulle superfici esterne.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="sink2.jpg" alt="Prolunga rubinetto antischizzo">
+            </div>
+        </div>
+
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>🛠️</span> <strong>Installazione Facile:</strong> Si avvita rapidamente alla maggior parte dei rubinetti standard grazie agli adattatori inclusi.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="sink3.jpg" alt="Installazione rapida">
+            </div>
+        </div>
+
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>✨</span> <strong>Finitura Galvanica Elegante:</strong> Resistente al tempo e all'usura, si adatta perfettamente allo stile della tua casa.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="sink4.jpg" alt="Design flessibile e moderno">
+            </div>
+        </div>
+
+        <div class="feature-item" style="margin-bottom: 35px;">
+            <p class="feature-point" style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                <span>🚰</span> <strong>Versatilità di Utilizzo:</strong> Ideale sia per sciacquare grandi stoviglie in cucina che per l'uso quotidiano in bagno.
+            </p>
+            <div class="feature-card-thumb">
+                <img src="sink5.jpg" alt="Utilizzo pratico per il lavello">
+            </div>
+        </div>
+    </div>
+
+    <!-- Policies Container -->
+    <div class="product-policies" style="max-width: 1100px; margin: 30px auto; padding: 0 20px; font-family: 'Inter', sans-serif; color: #444; text-align: left;">
+        <div class="policy-box" style="margin-bottom: 25px;">
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #111; margin-bottom: 10px; font-weight: 600;">Informativa sulla Spedizione</h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                Spedizione GRATUITA per ordini superiori a <strong>€69</strong>. Consegna stimata in <strong>7-14 giorni lavorativi</strong>.
+            </p>
+        </div>
+
+        <div class="policy-box">
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #111; margin-bottom: 10px; font-weight: 600;">Informativa su Resi e Cambi</h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                Reso garantito entro <strong>30 giorni</strong> dalla ricezione del prodotto.
+            </p>
+        </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 40px auto; max-width: 1100px;">
+
+    <!-- Customer Reviews Section with Rating Breakdown Box -->
+    <div class="reviews-section" style="max-width: 1100px; margin: 40px auto 50px auto; padding: 0 20px; font-family: 'Inter', sans-serif;">
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 24px; color: #111; margin-bottom: 25px;">Recensioni dei Clienti</h2>
+        
+        <!-- Rating Summary Box -->
+        <div style="background-color: #f9f9f9; padding: 30px; border-radius: 12px; display: flex; align-items: center; gap: 40px; margin-bottom: 40px; max-width: 650px;">
+            <!-- Left Big Rating -->
+            <div style="text-align: center; min-width: 140px;">
+                <div style="font-size: 52px; font-weight: bold; color: #111; line-height: 1;">4.9</div>
+                <div style="color: #ffb700; font-size: 20px; margin: 8px 0 4px 0;">★★★★★</div>
+                <div style="color: #666; font-size: 13px;">Basato su 2940 recensioni</div>
+            </div>
+
+            <!-- Right Star Bars -->
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #555;">
+                    <span style="width: 55px;">5 stelle</span>
+                    <div style="flex: 1; background: #e0e0e0; height: 10px; border-radius: 5px; overflow: hidden;">
+                        <div style="width: 93%; background: #ffb700; height: 100%;"></div>
+                    </div>
+                    <span style="width: 35px; text-align: right;">93%</span>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #555;">
+                    <span style="width: 55px;">4 stelle</span>
+                    <div style="flex: 1; background: #e0e0e0; height: 10px; border-radius: 5px; overflow: hidden;">
+                        <div style="width: 5%; background: #ffb700; height: 100%;"></div>
+                    </div>
+                    <span style="width: 35px; text-align: right;">5%</span>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #555;">
+                    <span style="width: 55px;">3 stelle</span>
+                    <div style="flex: 1; background: #e0e0e0; height: 10px; border-radius: 5px; overflow: hidden;">
+                        <div style="width: 2%; background: #ffb700; height: 100%;"></div>
+                    </div>
+                    <span style="width: 35px; text-align: right;">2%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual Reviews List -->
+        <div class="reviews-list" style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="border-bottom: 1px solid #eee; padding-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-weight: 600; font-size: 15px;">C***a <span style="font-weight: normal; color: #888; font-size: 13px; margin-left: 8px;">🇮🇹 Acquisto Verificato</span></span>
+                    <span style="color: #ffb700; font-size: 16px;">★★★★★</span>
+                </div>
+                <p style="margin: 0; font-size: 14px; color: #444; line-height: 1.6;">Molto utile in cucina! Si montano in un attimo le guarnizioni ed evita che l'acqua schizzi ovunque quando lavo le pentole grandi.</p>
+            </div>
+
+            <div style="border-bottom: 1px solid #eee; padding-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-weight: 600; font-size: 15px;">E***e <span style="font-weight: normal; color: #888; font-size: 13px; margin-left: 8px;">🇮🇹 Acquisto Verificato</span></span>
+                    <span style="color: #ffb700; font-size: 16px;">★★★★★</span>
+                </div>
+                <p style="margin: 0; font-size: 14px; color: #444; line-height: 1.6;">Prodotto ottimo, il giunto universale rende l'installazione facilissima anche per rubinetti non recenti. Consigliato!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer style="background-color: #111; color: #fff; padding: 50px 20px 20px 20px; font-family: 'Inter', sans-serif; margin-top: 60px;">
+        <div style="max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid #333;">
+            
+            <!-- Column 1: About -->
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 20px; margin-bottom: 15px;">Sparkles</h3>
+                <p style="color: #aaa; font-size: 14px; line-height: 1.6; margin: 0;">Offriamo i migliori prodotti per la tua casa e la tua vita quotidiana. Qualità garantita e spedizioni veloci in tutta Italia.</p>
+            </div>
+
+            <!-- Column 2: Links -->
+            <div style="flex: 1; min-width: 150px;">
+                <h4 style="font-size: 16px; margin-bottom: 15px; color: #fff;">Link Utili</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 2;">
+                    <li><a href="index.html" style="color: #aaa; text-decoration: none;">Home</a></li>
+                    <li><a href="#" style="color: #aaa; text-decoration: none;">Prodotti</a></li>
+                    <li><a href="#" style="color: #aaa; text-decoration: none;">Chi Siamo</a></li>
+                    <li><a href="#" style="color: #aaa; text-decoration: none;">Contatti</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Customer Care -->
+            <div style="flex: 1; min-width: 180px;">
+                <h4 style="font-size: 16px; margin-bottom: 15px; color: #fff;">Assistenza Clienti</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 2;">
+                    <li><a href="#" style="color: #aaa; text-decoration: none;">Spedizioni e Consegne</a></li>
+                    <li><a href="#" style="color: #aaa; text-decoration: none;">Politica di Reso</a></li>
+                    <li><a href="#" style="color: #aaa; text-decoration: none;">Termini e Condizioni</a></li>
+                    <li><a href="#" style="color: #aaa; text-decoration: none;">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Copyright -->
+        <div style="max-width: 1100px; margin: auto; text-align: center; padding-top: 20px; font-size: 13px; color: #777;">
+            © 2026 Sparkles. Tutti i diritti riservati.
+        </div>
+    </footer>
+
+    <!-- JavaScript to Handle Image Switcher -->
+    <script>
+        function changeImage(element) {
+            document.getElementById('mainImage').src = element.src;
+            let thumbnails = document.querySelectorAll('.thumb-img');
+            thumbnails.forEach(img => img.style.borderColor = '#ddd');
+            element.style.borderColor = '#2E7D32';
+        }
+    </script>
+
+</body>
+</html>

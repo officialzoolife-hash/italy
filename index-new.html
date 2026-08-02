@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparkles By Fatima</title>
+    <!-- Fonts: Poppins (Heading) & Inter (Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --primary-hover: #1B5E20;
+            --bg: #FFFFFF;
+            --text: #111111;
+            --grey: #F5F5F5;
+            --border: #E5E5E5;
+        }
+
+        body { font-family: 'Inter', sans-serif; color: var(--text); background-color: var(--bg); margin: 0; scroll-behavior: smooth; }
+        h1, h2 { font-family: 'Poppins', sans-serif; }
+
+        /* Button Design: 48px Height, 12px Radius */
+        .btn {
+            height: 48px;
+            padding: 0 24px;
+            border-radius: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+        .btn:hover { background-color: var(--primary-hover); }
+
+        /* Card Animation: Card Lift on Hover */
+        .product-card {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: 0.3s;
+            background: var(--bg);
+        }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .product-card img { width: 100%; border-radius: 8px; transition: 0.4s; }
+        .product-card:hover img { transform: scale(1.05); }
+
+        /* Sticky Bottom Cart (Mobile) */
+        .sticky-cart { position: fixed; bottom: 0; width: 100%; background: white; padding: 10px; border-top: 1px solid var(--border); text-align: center; }
+
+        /* Sticky Header */
+        .site-header {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            background: #FFFFFF;
+            border-bottom: 1px solid #E5E5E5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links { display: flex; gap: 30px; font-family: 'Inter', sans-serif; font-weight: 600; }
+        .nav-links a { text-decoration: none; color: #111111; }
+        .header-right { display: flex; gap: 20px; align-items: center; }
+
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .site-header { padding: 0 20px; }
+        }
+
+        /* Responsive Banner Styles */
+        .hero-banner {
+            width: 100%;
+            margin-top: 0;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            animation: fadeUp 1s ease-out;
+        }
+
+        /* Mobile View Rules for Banners */
+        @media (max-width: 768px) {
+            .hero-img {
+                height: 380px; /* Vertical height for mobile screens */
+                object-fit: cover; /* Centers the banner content cleanly */
+                object-position: center;
+            }
+        }
+
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 40px 20px;
+            background-color: #F5F5F5;
+            text-align: center;
+            border-top: 1px solid #E5E5E5;
+        }
+
+        .badge-item h4 {
+            font-family: 'Poppins', sans-serif;
+            color: #2E7D32;
+            margin: 10px 0 5px 0;
+        }
+
+        .badge-item p {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #111111;
+        }
+
+        .icon { font-size: 24px; }
+
+        @media (max-width: 768px) {
+            .trust-badges { grid-template-columns: 1fr; }
+        }
+
+        /* Category Section Styling */
+        .category-section {
+            padding: 60px 20px;
+            background-color: var(--bg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 25px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .category-card {
+            background: var(--grey);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .category-card-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover .category-card-img {
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 768px) {
+            .category-grid { grid-template-columns: 1fr; }
+            .category-card-img { height: 240px; }
+            .why-choose-us { flex-direction: column; text-align: center; }
+        }
+
+        .card-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background-color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .category-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            margin: 5px 0 10px 0;
+        }
+
+        .featured-collection .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .featured-collection .product-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* CUSTOMER REVIEWS SECTION STYLING */
+        .reviews-section {
+            width: 100%;
+            padding: 50px 0;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .reviews-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .reviews-avatar-container {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reviews-avatar { width: 90px; height: 90px; }
+
+        .reviews-title {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #111;
+        }
+
+        .reviews-marquee-container {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            padding: 20px 0;
+        }
+
+        .reviews-marquee-content {
+            display: inline-flex;
+            gap: 40px;
+            animation: moveReviews 22s linear infinite;
+        }
+
+        .review-card {
+            position: relative;
+            width: 280px;
+            height: 180px;
+            flex-shrink: 0;
+        }
+
+        .review-card-shadow {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 100%;
+            height: 100%;
+            background-color: #2E7D32;
+            border: 2px solid #111;
+            border-radius: 4px;
+        }
+
+        .review-card-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            border: 2px solid #111;
+            border-radius: 4px;
+            padding: 15px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .review-stars { color: #111; font-size: 15px; letter-spacing: 2px; margin-bottom: 8px; }
+
+        .review-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.5;
+            margin: 0;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .review-author {
+            font-size: 11px;
+            font-weight: 800;
+            color: #111;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 8px 0 0 0;
+            text-align: center;
+        }
+
+        .reviews-marquee-container:hover .reviews-marquee-content { animation-play-state: paused; }
+
+        @keyframes moveReviews {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* FAQ SECTION STYLING */
+        .faq-section {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            color: #111;
+        }
+
+        .faq-subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .faq-container { display: flex; flex-direction: column; gap: 25px; }
+
+        .faq-item { position: relative; width: 100%; transition: all 0.3s ease; }
+
+        .faq-shadow {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 100%;
+            height: 100%;
+            background-color: #2E7D32;
+            border: 2px solid #111;
+            border-radius: 4px;
+            z-index: 1;
+        }
+
+        .faq-main {
+            position: relative;
+            background-color: #ffffff;
+            border: 2px solid #111;
+            border-radius: 4px;
+            z-index: 2;
+            padding: 15px 20px;
+            box-sizing: border-box;
+        }
+
+        .faq-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-question-left { display: flex; align-items: center; gap: 15px; }
+
+        .faq-heart-icon {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #111;
+            stroke-width: 2px;
+            flex-shrink: 0;
+        }
+
+        .faq-question {
+            font-size: 14px;
+            font-weight: 800;
+            margin: 0;
+            color: #111;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .faq-arrow { font-size: 11px; color: #111; transition: transform 0.3s ease; }
+
+        .faq-answer-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding-top: 0;
+        }
+
+        .faq-answer {
+            font-size: 13px;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 500;
+            border-top: 1px dashed rgba(0,0,0,0.1);
+            padding-top: 12px;
+        }
+
+        .faq-item.active .faq-arrow { transform: rotate(180deg); }
+        .faq-item.active .faq-answer-container { max-height: 200px; padding-top: 10px; }
+
+        /* Instagram Grid Styling */
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+
+        .insta-item {
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .insta-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .insta-item:hover img { transform: scale(1.05); cursor: pointer; }
+
+        @media (max-width: 992px) { .instagram-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 576px) { .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+
+        /* Newsletter Styling */
+        .newsletter-section {
+            background-color: var(--grey);
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            max-width: 500px;
+            margin: 20px auto 0 auto;
+        }
+
+        .newsletter-form input {
+            padding: 0 16px;
+            height: 48px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            width: 100%;
+            outline: none;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-form input:focus { border-color: #2E7D32 !important; }
+        .newsletter-btn:hover { background-color: #1B5E20 !important; }
+
+        @media (max-width: 480px) {
+            .newsletter-form { flex-direction: column; }
+            .newsletter-btn { width: 100%; }
+        }
+
+        /* Footer Container Grid */
+        footer {
+            background-color: #FFFFFF;
+            padding: 60px 20px 20px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer-col h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 10px; }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #2E7D32 !important;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #777;
+        }
+
+        @media (max-width: 992px) { .footer-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 576px) {
+            .footer-container { grid-template-columns: 1fr; gap: 30px; }
+            .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div style="background-color: var(--primary); color: white; text-align: center; padding: 10px; font-size: 14px;">
+        🚚 SPEDIZIONE GRATUITA PER ORDINI SUPERIORI A 50€ ⭐ GARANZIA DI RIMBORSO DI 30 GIORNI 🔒 PAGAMENTO SICURO
+    </div>
+
+    <!-- Header Section -->
+    <header class="site-header">
+        <div class="logo">
+            <img src="Home (1).png" alt="Logo" style="height: 50px;">
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Negozio</a>
+            <a href="cleaning.html">Pulizia Casa</a>
+            <a href="kitchen.html">Cucina</a>
+            <a href="storage.html">Organizzazione</a>
+            <a href="pet.html">Cura Animali</a>
+            <a href="contact.html">Contatti</a>
+        </nav>
+
+        <div class="header-right">
+            <span>Cerca</span>
+            <span>Account</span>
+            <span>Preferiti ❤️</span>
+            <span>Carrello 🛒</span>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section 1 -->
+    <section class="hero-banner">
+        <img src="italy2.png" alt="Pulisci Meglio Vivi Meglio" class="hero-img">
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="badge-item">
+            <span class="icon">🚚</span>
+            <h4>Spedizione Veloce</h4>
+            <p>In tutto il paese</p>
+        </div>
+        <div class="badge-item">
+            <span class="icon">💳</span>
+            <h4>Pagamento Sicuro</h4>
+            <p>Checkout sicuro al 100%</p>
+        </div>
+        <div class="badge-item">
+            <span class="icon">↩</span>
+            <h4>Reso Facile</h4>
+            <p>Garanzia di 30 giorni</p>
+        </div>
+        <div class="badge-item">
+            <span class="icon">💬</span>
+            <h4>Supporto 24/7</h4>
+            <p>Siamo qui per aiutarti</p>
+        </div>
+    </section>
+
+    <!-- Category Grid Section -->
+    <section class="category-section">
+        <h2 class="section-title">Acquista per Categoria</h2>
+        <div class="category-grid">
+            <a href="soap-dispensor.html" class="category-card card-lift">
+                <img src="vaccum1.jpg" alt="Pulizia Casa" class="category-card-img">
+            </a>
+            <a href="product-dish-brush.html" class="category-card card-lift">
+                <img src="soap.jpg" alt="Cucina" class="category-card-img">
+            </a>
+            <a href="product-selfie-mirror.html" class="category-card card-lift">
+                <img src="pett.jpg" alt="Organizzazione" class="category-card-img">
+            </a>
+            <a href="dog-wash.html" class="category-card card-lift">
+                <img src="spin1.jpg" alt="Cura Animali" class="category-card-img">
+            </a>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us" style="padding: 60px 20px; display: flex; align-items: center; gap: 40px; max-width: 1200px; margin: auto; flex-wrap: wrap;">
+        <div class="left-logo" style="flex: 1; min-width: 300px; text-align: center;">
+            <img src="Home (1).png" alt="Logo" style="max-width: 250px; width: 100%; height: auto;">
+        </div>
+
+        <div class="right-content" style="flex: 1; min-width: 300px;">
+            <h2 style="font-family: 'Poppins', sans-serif; font-size: 32px; margin-bottom: 20px;">Perché Sceglierci</h2>
+            <ul style="list-style: none; padding: 0; font-family: 'Inter', sans-serif; font-size: 18px;">
+                <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <span style="color: #2E7D32;">✔</span> Qualità Premium
+                </li>
+                <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <span style="color: #2E7D32;">✔</span> Spedizione Rapida
+                </li>
+                <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <span style="color: #2E7D32;">✔</span> Resi Semplici
+                </li>
+                <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <span style="color: #2E7D32;">✔</span> Scelto da Migliaia di Clienti
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Hero Banner Section 2 -->
+    <section class="hero-banner">
+        <img src="italy3.png" alt="Pulisci Meglio Vivi Meglio" class="hero-img">
+    </section>
+
+    <!-- Featured Collection -->
+    <section class="featured-collection" style="padding: 60px 20px; max-width: 1200px; margin: auto;">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 40px; font-family: 'Poppins', sans-serif;">Collezione In Evidenza</h2>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <a href="pet-cooling-mat.html" style="text-decoration: none; color: inherit;">
+                    <img src="cut.jpg" alt="Tagliaverdure multifunzione">
+                    <h3>Tagliaverdure multifunzione</h3>
+                </a>
+                <p>€15.00</p>
+                <button class="btn" onclick="window.location.href='pet-cooling-mat.html'">Aggiungi al Carrello</button>
+            </div>
+            
+            <div class="product-card">
+                <a href="idropulsore-orale.html" style="text-decoration: none; color: inherit;">
+                    <img src="wire.jpg" alt="Stendibiancheria a Filo">
+                    <h3>Stendibiancheria a Filo in Acciaio Retrattile Multifunzione</h3>
+                </a>
+                <p>€15.00</p>
+                <button class="btn" onclick="window.location.href='idropulsore-orale.html'">Aggiungi al Carrello</button>
+            </div>
+
+            <div class="product-card">
+                <a href="porta-fazzoletti-parete.html" style="text-decoration: none; color: inherit;">
+                    <img src="sink.jpg" alt="Prolunga Universale">
+                    <h3>Prolunga Universale per Rubinetto Antischizzo per Cucina e Casa</h3>
+                </a>
+                <p>€15.00</p>
+                <button class="btn" onclick="window.location.href='porta-fazzoletti-parete.html'">Aggiungi al Carrello</button>
+            </div>
+
+            <div class="product-card">
+                <a href="set-14-rotoli-carta-igienica.html" style="text-decoration: none; color: inherit;">
+                    <img src="rack.jpeg" alt="Portaoggetti per Lavello">
+                    <h3>Portaoggetti per Lavello e Scolapiatti da Cucina</h3>
+                </a>
+                <p>€15.00</p>
+                <button class="btn" onclick="window.location.href='set-14-rotoli-carta-igienica.html'">Aggiungi al Carrello</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <div class="reviews-section">
+        <div class="reviews-header">
+            <div class="reviews-avatar-container">
+                <svg class="reviews-avatar" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="35" fill="#2d2d2d"/>
+                    <circle cx="20" cy="35" r="12" fill="#2d2d2d"/>
+                    <circle cx="80" cy="35" r="12" fill="#2d2d2d"/>
+                    <circle cx="50" cy="53" r="26" fill="#ffd5c6"/>
+                    <path d="M24 53 C24 35, 76 35, 76 53 C76 40, 24 40, 24 53 Z" fill="#2d2d2d"/>
+                    <circle cx="34" cy="58" r="5" fill="#ff9ebb" opacity="0.7"/>
+                    <circle cx="66" cy="58" r="5" fill="#ff9ebb" opacity="0.7"/>
+                    <path d="M32 48 Q37 44 42 48" stroke="#2d2d2d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <path d="M58 48 Q63 44 68 48" stroke="#2d2d2d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <path d="M18 23 L26 27 L22 31 Z" fill="#ff63b1" stroke="#111" stroke-width="1.5"/>
+                    <path d="M14 27 L22 31 L18 35 Z" fill="#ff63b1" stroke="#111" stroke-width="1.5"/>
+                    <circle cx="18" cy="29" r="3" fill="#ff9ebb" stroke="#111" stroke-width="1.5"/>
+                    <path d="M82 23 L74 27 L78 31 Z" fill="#ff63b1" stroke="#111" stroke-width="1.5"/>
+                    <path d="M86 27 L78 31 L82 35 Z" fill="#ff63b1" stroke="#111" stroke-width="1.5"/>
+                    <circle cx="82" cy="29" r="3" fill="#ff9ebb" stroke="#111" stroke-width="1.5"/>
+                    <circle cx="50" cy="61" r="10" fill="#ff85c2" stroke="#fff" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <h2 class="reviews-title">I NOSTRI CLIENTI FELICI 💕</h2>
+        </div>
+
+        <div class="reviews-marquee-container">
+            <div class="reviews-marquee-content">
+                <div class="review-card">
+                    <div class="review-card-shadow"></div>
+                    <div class="review-card-main">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">Questo è il mio terzo ordine e la qualità è sempre fantastica! Lo consiglio vivamente ✨</p>
+                        <h4 class="review-author">ALIZA</h4>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-card-shadow"></div>
+                    <div class="review-card-main">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">È la prima volta che ordino e me ne sono già innamorata 😭💖 Tutto sembra davvero eccellente!</p>
+                        <h4 class="review-author">AROOJ</h4>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-card-shadow"></div>
+                    <div class="review-card-main">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">Il loro servizio clienti è gentilissimo 🥰 Rispondono subito a qualsiasi domanda — esperienza ottima!</p>
+                        <h4 class="review-author">HAIQA</h4>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-card-shadow"></div>
+                    <div class="review-card-main">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">Innamorata del mio ordine 😭💖 Il packaging era fantastico, sembrava di aprire un regalo 🎁 Qualità 10/10!</p>
+                        <h4 class="review-author">AIMA</h4>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-card-shadow"></div>
+                    <div class="review-card-main">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">Questo è il mio terzo ordine e la qualità è sempre fantastica! Lo consiglio vivamente ✨</p>
+                        <h4 class="review-author">ALIZA</h4>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-card-shadow"></div>
+                    <div class="review-card-main">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">È la prima volta che ordino e me ne sono già innamorata 😭💖 Tutto sembra davvero eccellente!</p>
+                        <h4 class="review-author">AROOJ</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ SECTION -->
+    <div class="faq-section">
+        <h2 class="faq-title">ANGOLO AIUTO 🎀</h2>
+        <p class="faq-subtitle">Trova qui sotto le risposte alle domande più frequenti.</p>
+
+        <div class="faq-container">
+            <div class="faq-item active">
+                <div class="faq-shadow"></div>
+                <div class="faq-main">
+                    <div class="faq-header-bar" onclick="toggleFaq(this)">
+                        <div class="faq-question-left">
+                            <svg class="faq-heart-icon" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                            <h3 class="faq-question">QUALI SONO I COSTI DI SPEDIZIONE?</h3>
+                        </div>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer-container">
+                        <p class="faq-answer">I nostri costi di spedizione sono fissi ed economici per tutte le destinazioni.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-shadow"></div>
+                <div class="faq-main">
+                    <div class="faq-header-bar" onclick="toggleFaq(this)">
+                        <div class="faq-question-left">
+                            <svg class="faq-heart-icon" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                            <h3 class="faq-question">IL PAGAMENTO È ANTICIPATO?</h3>
+                        </div>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer-container">
+                        <p class="faq-answer">
+                            Sì, richiediamo il pagamento anticipato completo.<br><br>
+                            Se preferisci il pagamento alla consegna (contrassegno), è necessario un acconto del 50% in anticipo e il saldo alla consegna. I pacchi vengono gestiti con la massima cura.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instagram Gallery Section -->
+    <section style="padding: 60px 20px; max-width: 1200px; margin: auto;">
+        <h2 class="section-title">Seguici Su Instagram</h2>
+        <div class="instagram-grid">
+            <div class="insta-item"><img src="vaccum.webp" alt="Post Instagram 1"></div>
+            <div class="insta-item"><img src="tooth.jpg" alt="Post Instagram 2"></div>
+            <div class="insta-item"><img src="tissue.jpg" alt="Post Instagram 3"></div>
+            <div class="insta-item"><img src="paper.jpg" alt="Post Instagram 4"></div>
+            <div class="insta-item"><img src="pet - Copy.png" alt="Post Instagram 5"></div>
+            <div class="insta-item"><img src="before.png" alt="Post Instagram 6"></div>
+        </div>
+    </section>
+
+    <!-- Newsletter Form Section -->
+    <section class="newsletter-section">
+        <h2 style="font-family: 'Poppins', sans-serif; margin: 0 0 10px 0;">Entra nella Famiglia Sparkles ✨</h2>
+        <p style="color: #666; margin: 0 0 20px 0;">Iscriviti per ricevere sconti speciali e offerte esclusive.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Inserisci il tuo indirizzo email" required>
+            <button class="btn newsletter-btn" type="submit">Iscriviti</button>
+        </form>
+    </section>
+
+    <!-- Site Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="Home (1).png" alt="Logo" style="height: 40px; margin-bottom: 15px;">
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">Sparkles By Fatima offre prodotti di alta qualità per la pulizia della casa, la cucina e gli animali domestici.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Link Rapidi</h4>
+                <ul>
+                    <li><a href="shop.html">Tutti i Prodotti</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
