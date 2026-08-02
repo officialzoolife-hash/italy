@@ -7,6 +7,10 @@
     <!-- Fonts: Poppins (Heading) & Inter (Body) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@800&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         :root {
             --primary: #2E7D32;
             --primary-hover: #1B5E20;
@@ -16,8 +20,16 @@
             --border: #E5E5E5;
         }
 
-        body { font-family: 'Inter', sans-serif; color: var(--text); background-color: var(--bg); margin: 0; scroll-behavior: smooth; }
-        h1, h2 { font-family: 'Poppins', sans-serif; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: var(--text); 
+            background-color: var(--bg); 
+            margin: 0; 
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
 
         /* Button Design: 48px Height, 12px Radius */
         .btn {
@@ -30,6 +42,11 @@
             cursor: pointer;
             transition: 0.3s;
             font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            width: 100%;
         }
         .btn:hover { background-color: var(--primary-hover); }
 
@@ -40,13 +57,16 @@
             border-radius: 12px;
             transition: 0.3s;
             background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .product-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .product-card img { width: 100%; border-radius: 8px; transition: 0.4s; }
         .product-card:hover img { transform: scale(1.05); }
 
         /* Sticky Bottom Cart (Mobile) */
-        .sticky-cart { position: fixed; bottom: 0; width: 100%; background: white; padding: 10px; border-top: 1px solid var(--border); text-align: center; }
+        .sticky-cart { position: fixed; bottom: 0; width: 100%; background: white; padding: 10px; border-top: 1px solid var(--border); text-align: center; z-index: 999; }
 
         /* Sticky Header */
         .site-header {
@@ -82,14 +102,13 @@
             width: 100%;
             height: auto;
             display: block;
-            animation: fadeUp 1s ease-out;
         }
 
         /* Mobile View Rules for Banners */
         @media (max-width: 768px) {
             .hero-img {
-                height: 380px; /* Vertical height for mobile screens */
-                object-fit: cover; /* Centers the banner content cleanly */
+                height: 380px;
+                object-fit: cover;
                 object-position: center;
             }
         }
@@ -119,6 +138,9 @@
         .icon { font-size: 24px; }
 
         @media (max-width: 768px) {
+            .trust-badges { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        }
+        @media (max-width: 480px) {
             .trust-badges { grid-template-columns: 1fr; }
         }
 
@@ -198,8 +220,11 @@
             gap: 20px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .featured-collection .product-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .featured-collection .product-grid { grid-template-columns: 1fr; }
         }
 
         /* CUSTOMER REVIEWS SECTION STYLING */
@@ -281,7 +306,6 @@
             border: 2px solid #111;
             border-radius: 4px;
             padding: 15px;
-            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -323,7 +347,6 @@
             max-width: 600px;
             margin: 40px auto;
             padding: 0 20px;
-            box-sizing: border-box;
             font-family: inherit;
         }
 
@@ -367,7 +390,6 @@
             border-radius: 4px;
             z-index: 2;
             padding: 15px 20px;
-            box-sizing: border-box;
         }
 
         .faq-header-bar {
@@ -604,15 +626,19 @@
         <div class="category-grid">
             <a href="soap-dispensor.html" class="category-card card-lift">
                 <img src="vaccum1.jpg" alt="Pulizia Casa" class="category-card-img">
+                <h3>Pulizia Casa</h3>
             </a>
             <a href="product-dish-brush.html" class="category-card card-lift">
                 <img src="soap.jpg" alt="Cucina" class="category-card-img">
+                <h3>Cucina</h3>
             </a>
             <a href="product-selfie-mirror.html" class="category-card card-lift">
                 <img src="pett.jpg" alt="Organizzazione" class="category-card-img">
+                <h3>Organizzazione</h3>
             </a>
             <a href="dog-wash.html" class="category-card card-lift">
                 <img src="spin1.jpg" alt="Cura Animali" class="category-card-img">
+                <h3>Cura Animali</h3>
             </a>
         </div>
     </section>
@@ -658,7 +684,7 @@
                     <h3>Tagliaverdure multifunzione</h3>
                 </a>
                 <p>€15.00</p>
-                <button class="btn" onclick="window.location.href='pet-cooling-mat.html'">Aggiungi al Carrello</button>
+                <a href="pet-cooling-mat.html" class="btn">Aggiungi al Carrello</a>
             </div>
             
             <div class="product-card">
@@ -667,7 +693,7 @@
                     <h3>Stendibiancheria a Filo in Acciaio Retrattile Multifunzione</h3>
                 </a>
                 <p>€15.00</p>
-                <button class="btn" onclick="window.location.href='idropulsore-orale.html'">Aggiungi al Carrello</button>
+                <a href="idropulsore-orale.html" class="btn">Aggiungi al Carrello</a>
             </div>
 
             <div class="product-card">
@@ -676,7 +702,7 @@
                     <h3>Prolunga Universale per Rubinetto Antischizzo per Cucina e Casa</h3>
                 </a>
                 <p>€15.00</p>
-                <button class="btn" onclick="window.location.href='porta-fazzoletti-parete.html'">Aggiungi al Carrello</button>
+                <a href="porta-fazzoletti-parete.html" class="btn">Aggiungi al Carrello</a>
             </div>
 
             <div class="product-card">
@@ -685,7 +711,7 @@
                     <h3>Portaoggetti per Lavello e Scolapiatti da Cucina</h3>
                 </a>
                 <p>€15.00</p>
-                <button class="btn" onclick="window.location.href='set-14-rotoli-carta-igienica.html'">Aggiungi al Carrello</button>
+                <a href="set-14-rotoli-carta-igienica.html" class="btn">Aggiungi al Carrello</a>
             </div>
         </div>
     </section>
@@ -781,7 +807,7 @@
         <p class="faq-subtitle">Trova qui sotto le risposte alle domande più frequenti.</p>
 
         <div class="faq-container">
-            <div class="faq-item active">
+            <div class="faq-item">
                 <div class="faq-shadow"></div>
                 <div class="faq-main">
                     <div class="faq-header-bar" onclick="toggleFaq(this)">
@@ -841,7 +867,7 @@
         <p style="color: #666; margin: 0 0 20px 0;">Iscriviti per ricevere sconti speciali e offerte esclusive.</p>
         <form class="newsletter-form" onsubmit="event.preventDefault();">
             <input type="email" placeholder="Inserisci il tuo indirizzo email" required>
-            <button class="btn newsletter-btn" type="submit">Iscriviti</button>
+            <button class="btn newsletter-btn" type="submit" style="width: auto;">Iscriviti</button>
         </form>
     </section>
 
@@ -850,24 +876,44 @@
         <div class="footer-container">
             <div class="footer-col">
                 <img src="Home (1).png" alt="Logo" style="height: 40px; margin-bottom: 15px;">
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">Sparkles By Fatima offre prodotti di alta qualità per la pulizia della casa, la cucina e gli animali domestici.</p>
+                <p style="color: #555; font-size: 14px; line-height: 1.6;">I migliori prodotti per la tua casa, pulizia e cura della famiglia.</p>
             </div>
             <div class="footer-col">
                 <h4>Link Rapidi</h4>
                 <ul>
-                    <li><a href="shop.html">Tutti i Prodotti</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Negozio</a></li>
+                    <li><a href="contact.html">Contatti</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categorie</h4>
+                <ul>
+                    <li><a href="cleaning.html">Pulizia Casa</a></li>
+                    <li><a href="kitchen.html">Cucina</a></li>
+                    <li><a href="storage.html">Organizzazione</a></li>
+                    <li><a href="pet.html">Cura Animali</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Servizio Clienti</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Spedizioni</a></li>
+                    <li><a href="#">Politica di Reso</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; 2026 Sparkles By Fatima. Tutti i diritti riservati.</span>
+            <p>&copy; 2026 Sparkles By Fatima. Tutti i diritti riservati.</p>
         </div>
     </footer>
 
+    <!-- JS script for FAQ accordion click toggle -->
     <script>
         function toggleFaq(element) {
-            const item = element.closest('.faq-item');
-            item.classList.toggle('active');
+            const faqItem = element.closest('.faq-item');
+            faqItem.classList.toggle('active');
         }
     </script>
 </body>
